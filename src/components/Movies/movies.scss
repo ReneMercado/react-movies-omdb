@@ -1,0 +1,20 @@
+.movies {
+  &__header {
+    display: flex;
+    flex-direction: row;
+
+    &__title {
+      color: white;
+    }
+
+    &__genre-filter {
+      margin: auto 15px;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,32 @@
+.movieCard {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  width: 170px;
+
+  &__title {
+    text-align: center;
+    color: white;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  &__poster {
+    width: 100%;
+    height: 225px;
+    max-height: 225px;
+    background: #80808038;
+  }
+}
+
+.movieCard:hover {
+  transform: scale(1.2);
+}
+
+
+.movie_description{
+  position: absolute;
+}
