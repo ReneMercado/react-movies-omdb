@@ -21,12 +21,14 @@
     max-height: 225px;
     background: #80808038;
   }
+  
+  &:hover {
+    transform: scale(1.2);
+  }
+  &:hover  &__title{
+    display: none;
+  }
 }
-
-.movieCard:hover {
-  transform: scale(1.2);
-}
-
 
 .movie_description{
   position: absolute;

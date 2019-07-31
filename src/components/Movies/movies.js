@@ -8,7 +8,6 @@ import { groupBy } from "../../utility"
 
 class Movies extends Component {
   render() {
-    console.log("[MOVIES]: ", this.props.movies);
     const groupedResults = this.props.movies.length > 0 ? groupBy(this.props.movies, "Type") : { movie: [], series: [] };
     return (
       <div className="movies">
