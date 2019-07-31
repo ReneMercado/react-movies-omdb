@@ -1,6 +1,6 @@
 .description{
     color:white;
-    
+    animation: fadein 2s;
   
     &__content{
         display: flex;
@@ -45,4 +45,9 @@
 
         }
     }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
