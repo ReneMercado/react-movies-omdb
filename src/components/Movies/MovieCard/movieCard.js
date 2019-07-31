@@ -6,19 +6,15 @@ import notFound from "../../../assets/images/movie_not_found.png";
 class MovieCard extends Component {
   render() {
     return (
-      <div className="movieCard">
+      <div className="movieCard" onClick={() => this.props.setSelectedMovie(this.props.movie)}>
         <div className="movieCard__title">{this.props.movie.Title}</div>
-        <img
-          className="movieCard__poster"
+        <img className="movieCard__poster"
           src={
             this.props.movie.Poster !== "N/A"
               ? this.props.movie.Poster
               : notFound
           }
         />
-      </div>
-      <div className="movie_description">
-        <h1>Movie Description</h1>
       </div>
     );
   }

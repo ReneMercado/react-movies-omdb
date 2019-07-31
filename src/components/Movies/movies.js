@@ -1,28 +1,30 @@
 import React, { Component } from "react";
 import "./movies.scss";
 import MovieCard from "./MovieCard/movieCard";
+import MovieDescription from "./MovieDescription/movieDescription";
+import MoviesCarousel from "./MoviesCarousel/moviesCarousel";
 import { connect } from "react-redux";
+import { groupBy } from "../../utility"
 
 class Movies extends Component {
   render() {
     console.log("[MOVIES]: ", this.props.movies);
+    const groupedResults = this.props.movies.length > 0 ? groupBy(this.props.movies, "Type") : { movie: [], series: [] };
     return (
       <div className="movies">
         <div className="movies__header">
           <div className="movies__header__title">
-            <h1>MOVIES</h1>
+            <h1>Movies</h1>
           </div>
           <div className="movies__header__genre-filter">
             <select>
-              <option>Generos</option>
+              <option>Genres</option>
             </select>
           </div>
         </div>
-        <div className="movies__cards">
-          {this.props.movies.map(movie => {
-            return <MovieCard key={movie.imdbID} movie={movie} />;
-          })}
-        </div>
+        <MoviesCarousel movies={groupedResults["movie"] ? groupedResults["movie"] : []}></MoviesCarousel>
+        <h1>Series</h1>
+        <MoviesCarousel movies={groupedResults["series"] ? groupedResults["series"] : []}></MoviesCarousel>
       </div>
     );
   }
