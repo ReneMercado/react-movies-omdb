@@ -10,17 +10,15 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar">
-        <input onChange={(e) => this.onChangeSearch(e)} placeholder="Search Movie" />
+        <div className="navbar__title">OMDB</div>
+        <div className="navbar__search">
+          {/* <i className="fa fa-search"></i> */}
+          <input className="navbar__search__inputSearch" type="text" onChange={(e) => this.onChangeSearch(e)} placeholder="Search.." name="search2" />
+        </div>
       </div>
     );
   }
 }
-
-// const mapStateToProps = state => {
-//   return {
-//     lastPlays: state.game.lastPlays
-//   };
-// };
 
 const mapDispatchToProps = dispatch => {
   return {

@@ -1,35 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import "./moviesCarousel.scss";
 import MovieDescription from "../MovieDescription/movieDescription";
 import MovieCard from "../MovieCard/movieCard";
 
-class MoviesCarousel extends Component {
-    state = {
-        selectedMovie: null
-    }
-
-    setSelectedMovie = (movie) => {
-        this.setState({ selectedMovie: movie });
-    }
-
-    componentWillReceiveProps(newProps) {
-        if (newProps.movies !== this.props.movies) {
-            this.setSelectedMovie(null);
-        }
-    }
-
-    render() {
-        return (
-            <div className="carousel">
-                <div className="movies__cards">
-                    {this.props.movies.map(movie => {
-                        return <MovieCard key={movie.imdbID} movie={movie} setSelectedMovie={this.setSelectedMovie} />;
-                    })}
-                </div>
-                {this.state.selectedMovie ? <MovieDescription movie={this.state.selectedMovie}></MovieDescription> : null}
-            </div>
-        );
-    }
+const MoviesCarousel = (props) => {
+    console.log("[MovieCarousel PROPS]: ", props)
+    return (<div className="carousel">
+        <div className="carousel__title"> <h1>{props.sectionTitle}</h1></div>
+        <div className="carousel__moviesCards">
+            {props.movies.map(movie => {
+                return <MovieCard key={movie.imdbID} movie={movie} setSelectedMovie={props.setSelectedMovie} />;
+            })}
+        </div>
+        {props.selectedMovie ? <MovieDescription movie={props.selectedMovie} setSelectedMovie={props.setSelectedMovie}></MovieDescription> : null}
+    </div>
+    );
 }
 
 export default MoviesCarousel;

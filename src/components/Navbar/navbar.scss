@@ -3,6 +3,23 @@
     position: fixed;
     height: 60px;
     width: 100%;
-    background: red;
+    background: #221f1f;
     z-index: 1;
+    display:flex;
+    flex-direction: row;
+    &__title{
+      margin:auto;
+      margin-left: 0;
+      font-weight: bold;
+      font-size: 3em;
+    }
+    &__search{
+      margin: auto;
+      margin-right: 50px;
+      &__inputSearch{
+        padding: 7px;
+      }
+    }
+
+    
   }
