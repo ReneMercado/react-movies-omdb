@@ -5,12 +5,19 @@ import { connect } from "react-redux";
 import { groupBy } from "../../utility";
 
 export class MoviesContainer extends Component {
+  groupedResults = { movie: null, series: null };
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.movies !== this.props.movies) {
+      this.groupedResults =
+        newProps.movies.length > 0
+          ? groupBy(newProps.movies, "Type")
+          : { movie: null, series: null };
+    }
+  }
+
   render() {
-    let groupedResults =
-      this.props.movies.length > 0
-        ? groupBy(this.props.movies, "Type")
-        : { movie: null, series: null };
-    return <Movies {...this.props} groupedResults={groupedResults} />;
+    return <Movies {...this.props} groupedResults={this.groupedResults} />;
   }
 }
 

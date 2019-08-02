@@ -13,7 +13,7 @@ class MoviesCarouselContainer extends Component {
 
     componentWillReceiveProps(newProps) {
         if (newProps.movies !== this.props.movies) {
-            this.setSelectedMovie(null);
+            this.setSelectedMovie();
         }
     }
 
