@@ -142,7 +142,7 @@ describe("Movies Actions", () => {
       imdbVotes: "280,753"
     };
 
-    moxios.stubRequest("https://www.omdbapi.com/?s=how&apikey=652d51ce", {
+    moxios.stubRequest("https://www.omdbapi.com/?s=how&apikey=49ef1407", {
       status: 200,
       response: {
         Response: "True",
@@ -159,7 +159,7 @@ describe("Movies Actions", () => {
       }
     });
 
-    moxios.stubRequest("https://www.omdbapi.com/?i=tt0892769&apikey=652d51ce", {
+    moxios.stubRequest("https://www.omdbapi.com/?i=tt0892769&apikey=49ef1407", {
       status: 200,
       response: movieDescriptonRes
     });

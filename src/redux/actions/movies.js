@@ -71,27 +71,33 @@ export const searchMovies = (page = 1) => {
       let state = getState();
       let movieName = state.movies.currentSearch;
 
-      let movies = await Axios.get(
-        `https://www.omdbapi.com/?s=${movieName}&page=${page}&type=movie&apikey=652d51ce`
-      );
+      if (movieName.trim() != "") {
+        let movies = await Axios.get(
+          `https://www.omdbapi.com/?s=${movieName}&page=${page}&type=movie&apikey=49ef1407`
+        );
+        if (movies.data.Search) {
+          dispatch(setMovieNextPage(page + 1));
+          dispatch(setMoviePrevPage(page - 1));
+          dispatch(setMovieCurrentPage(page));
 
-      if (movies.data.Search) {
-        dispatch(setMovieNextPage(page + 1));
-        dispatch(setMoviePrevPage(page - 1));
-        dispatch(setMovieCurrentPage(page));
+          Promise.all(
+            movies.data.Search.map(async movie => {
+              let res = await Axios.get(
+                `https://www.omdbapi.com/?i=${movie.imdbID}&apikey=49ef1407`
+              );
 
-        Promise.all(
-          movies.data.Search.map(async movie => {
-            let res = await Axios.get(
-              `https://www.omdbapi.com/?i=${movie.imdbID}&apikey=652d51ce`
-            );
-
-            return res.data;
-          })
-        ).then(res => {
-          // dispatch(finishLoading());
-          return dispatch(setMovies(res));
-        });
+              return res.data;
+            })
+          ).then(res => {
+            // dispatch(finishLoading());
+            return dispatch(setMovies(res));
+          });
+        }
+      } else {
+        dispatch(setMovies([]));
+        dispatch(setMovieNextPage(1));
+        dispatch(setMoviePrevPage(1));
+        dispatch(setMovieCurrentPage(1));
       }
     } catch (e) {
       // dispatch(finishLoading());
@@ -105,27 +111,33 @@ export const searchSeries = (page = 1) => {
       // dispatch(initLoading());
       let state = getState();
       let seriesName = state.movies.currentSearch;
+      if (seriesName.trim() != "") {
+        let series = await Axios.get(
+          `https://www.omdbapi.com/?s=${seriesName}&page=${page}&type=series&apikey=49ef1407`
+        );
 
-      let series = await Axios.get(
-        `https://www.omdbapi.com/?s=${seriesName}&page=${page}&type=series&apikey=652d51ce`
-      );
+        if (series.data.Search) {
+          dispatch(setSerieNextPage(page + 1));
+          dispatch(setSeriePrevPage(page - 1));
+          dispatch(setSerieCurrentPage(page));
+          Promise.all(
+            series.data.Search.map(async serie => {
+              let res = await Axios.get(
+                `https://www.omdbapi.com/?i=${serie.imdbID}&apikey=49ef1407`
+              );
 
-      if (series.data.Search) {
-        dispatch(setSerieNextPage(page + 1));
-        dispatch(setSeriePrevPage(page - 1));
-        dispatch(setSerieCurrentPage(page));
-        Promise.all(
-          series.data.Search.map(async serie => {
-            let res = await Axios.get(
-              `https://www.omdbapi.com/?i=${serie.imdbID}&apikey=652d51ce`
-            );
-
-            return res.data;
-          })
-        ).then(res => {
-          // dispatch(finishLoading());
-          return dispatch(setSeries(res));
-        });
+              return res.data;
+            })
+          ).then(res => {
+            // dispatch(finishLoading());
+            return dispatch(setSeries(res));
+          });
+        }
+      } else {
+        dispatch(setSeries([]));
+        dispatch(setSerieNextPage(1));
+        dispatch(setSeriePrevPage(1));
+        dispatch(setSerieCurrentPage(1));
       }
     } catch (e) {
       // dispatch(finishLoading());
