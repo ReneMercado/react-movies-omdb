@@ -5,13 +5,19 @@
     overflow-x: auto;
     overflow-y: hidden;
 
-    &__scrollPrev, &__scrollNext {
+    &__scrollPrev,
+    &__scrollNext {
       display: flex;
       align-items: center;
+      background: #8080802e;
+      border-radius: 12px;
+      padding: 9px;
+
+      &:hover {
+        background: #80808070;
+      }
 
       &__span {
-        background: grey;
-        border-radius: 12px;
         font-size: 25px;
         font-weight: bold;
       }
@@ -19,12 +25,22 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 769px) {
   .carousel {
-    &__title {
-      h1 {
-        font-size: 20px;
-      }
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
     }
   }
 }

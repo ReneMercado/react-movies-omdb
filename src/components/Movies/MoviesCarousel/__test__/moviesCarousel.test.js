@@ -58,13 +58,13 @@ describe("MoviesCarousel Component", () => {
 
   it("searchNextPage is called when scroll_span clicked", () => {
     wrapper = subject(mock_props);
-    wrapper.find(".carousel__moviesCards__scrollPrev__span").simulate("click");
+    wrapper.find(".carousel__moviesCards__scrollPrev").simulate("click");
     expect(mock_props.searchNextPage).toHaveBeenCalled();
   });
 
   it("searchNextPage is called when scroll_span clicked", () => {
     wrapper = subject(mock_props);
-    wrapper.find(".carousel__moviesCards__scrollNext__span").simulate("click");
+    wrapper.find(".carousel__moviesCards__scrollNext").simulate("click");
     expect(mock_props.searchNextPage).toHaveBeenCalled();
   });
 

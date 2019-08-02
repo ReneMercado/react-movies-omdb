@@ -11,8 +11,8 @@ const MoviesCarousel = props => {
       </div>
       <div className="carousel__moviesCards"  ref={(el) => props.refCarouselElem(el)}>
         {props.currentPage !== 1 ? (
-          <div className="carousel__moviesCards__scrollPrev">
-            <span className="carousel__moviesCards__scrollPrev__span" onClick={() => props.searchNextPage(props.currentPage - 1)}>
+          <div className="carousel__moviesCards__scrollPrev" onClick={() => props.searchNextPage(props.currentPage - 1)}>
+            <span className="carousel__moviesCards__scrollPrev__span">
               &lt;
             </span>
           </div>
@@ -26,8 +26,8 @@ const MoviesCarousel = props => {
             />
           );
         })}
-        <div className="carousel__moviesCards__scrollNext">
-          <span className="carousel__moviesCards__scrollNext__span" onClick={() => props.searchNextPage(props.currentPage + 1)}>
+        <div className="carousel__moviesCards__scrollNext" onClick={() => props.searchNextPage(props.currentPage + 1)}>
+          <span className="carousel__moviesCards__scrollNext__span">
             &gt;
           </span>
         </div>
