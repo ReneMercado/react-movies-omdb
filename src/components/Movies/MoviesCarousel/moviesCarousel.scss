@@ -1,21 +1,30 @@
+.carousel {
+  &__moviesCards {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
 
-  .carousel
-  {
-    &__moviesCards {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        overflow-y: hidden;
-      }
-    
-  }
+    &__scrollPrev, &__scrollNext {
+      display: flex;
+      align-items: center;
 
-@media screen and (max-width: 768px){
-.carousel{
-  &__title{
-    h1 {
-      font-size: 20px;
+      &__span {
+        background: grey;
+        border-radius: 12px;
+        font-size: 25px;
+        font-weight: bold;
       }
     }
   }
-}  
+}
+
+@media screen and (max-width: 768px) {
+  .carousel {
+    &__title {
+      h1 {
+        font-size: 20px;
+      }
+    }
+  }
+}

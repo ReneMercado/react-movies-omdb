@@ -30,6 +30,86 @@ describe("Movies Actions", () => {
     expect(expectedAction).toEqual(actions.setMovies(movies));
   });
 
+  it("should return set series action", () => {
+    let series = [{ title: "Series Test 1" }, { title: "Series Test 2" }];
+    let expectedAction = {
+      type: actionTypes.SET_SERIES,
+      payload: series
+    };
+
+    expect(expectedAction).toEqual(actions.setSeries(series));
+  });
+
+  it("should return set SET_MOVIE_NEXT_PAGE action", () => {
+    let page = 1;
+    let expectedAction = {
+      type: actionTypes.SET_MOVIE_NEXT_PAGE,
+      payload: page
+    };
+
+    expect(actions.setMovieNextPage(page)).toEqual(expectedAction);
+  });
+
+  it("should return set SET_MOVIE_PREV_PAGE action", () => {
+    let page = 1;
+    let expectedAction = {
+      type: actionTypes.SET_MOVIE_PREV_PAGE,
+      payload: page
+    };
+
+    expect(actions.setMoviePrevPage(page)).toEqual(expectedAction);
+  });
+
+  it("should return set SET_MOVIE_CURRENT_PAGE action", () => {
+    let page = 1;
+    let expectedAction = {
+      type: actionTypes.SET_MOVIE_CURRENT_PAGE,
+      payload: page
+    };
+
+    expect(actions.setMovieCurrentPage(page)).toEqual(expectedAction);
+  });
+
+  it("should return set SET_MOVIE_NEXT_PAGE action", () => {
+    let page = 1;
+    let expectedAction = {
+      type: actionTypes.SET_SERIE_NEXT_PAGE,
+      payload: page
+    };
+
+    expect(actions.setSerieNextPage(page)).toEqual(expectedAction);
+  });
+
+  it("should return set SET_SERIE_PREV_PAGE action", () => {
+    let page = 1;
+    let expectedAction = {
+      type: actionTypes.SET_SERIE_PREV_PAGE,
+      payload: page
+    };
+
+    expect(actions.setSeriePrevPage(page)).toEqual(expectedAction);
+  });
+
+  it("should return set SET_SERIE_CURRENT_PAGE action", () => {
+    let page = 1;
+    let expectedAction = {
+      type: actionTypes.SET_SERIE_CURRENT_PAGE,
+      payload: page
+    };
+
+    expect(actions.setSerieCurrentPage(page)).toEqual(expectedAction);
+  });
+
+  it("should return set SET_CURRENT_SEARCH action", () => {
+    let searchWords = "test string";
+    let expectedAction = {
+      type: actionTypes.SET_CURRENT_SEARCH,
+      payload: searchWords
+    };
+
+    expect(actions.setCurrentSearch(searchWords)).toEqual(expectedAction);
+  });
+
   it("should search movies", () => {
     let movieDescriptonRes = {
       Actors: "Jay Baruchel, Cate Blanchett, Gerard Butler, Craig Ferguson",

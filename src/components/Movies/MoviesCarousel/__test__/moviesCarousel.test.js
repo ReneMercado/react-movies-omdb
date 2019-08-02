@@ -32,7 +32,10 @@ describe("MoviesCarousel Component", () => {
         }
       ],
       setSelectedMovie: jest.fn(),
-      selectedMovie: null
+      selectedMovie: null,
+      currentPage: 2,
+      searchNextPage: jest.fn(),
+      refCarouselElem: jest.fn(),
     };
   });
 
@@ -51,5 +54,24 @@ describe("MoviesCarousel Component", () => {
     wrapper = subject(mock_props);
     let movieCardsCount = wrapper.find("MovieDescription").length;
     expect(movieCardsCount).toBe(1);
+  });
+
+  it("searchNextPage is called when scroll_span clicked", () => {
+    wrapper = subject(mock_props);
+    wrapper.find(".carousel__moviesCards__scrollPrev__span").simulate("click");
+    expect(mock_props.searchNextPage).toHaveBeenCalled();
+  });
+
+  it("searchNextPage is called when scroll_span clicked", () => {
+    wrapper = subject(mock_props);
+    wrapper.find(".carousel__moviesCards__scrollNext__span").simulate("click");
+    expect(mock_props.searchNextPage).toHaveBeenCalled();
+  });
+
+  it("scrollBack doesn't exists on currentPage = 1", () => {
+    mock_props.currentPage = 1;
+    wrapper = subject(mock_props);
+    let movieCardsCount = wrapper.find("carousel__moviesCards__scrollPrev").length;
+    expect(movieCardsCount).toBe(0);
   });
 });

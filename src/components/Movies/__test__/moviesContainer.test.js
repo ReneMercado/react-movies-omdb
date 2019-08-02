@@ -9,10 +9,10 @@ describe("MoviesContainer Component", () => {
   let mock_props = {};
   let groupedResults = {};
   let movies = [];
+  let series = [];
   let initialState = {
-    movies: {
-      movies: []
-    }
+    movies: [],
+    series: []
   };
   let store = mockStore(initialState);
 
@@ -70,7 +70,10 @@ describe("MoviesContainer Component", () => {
         Runtime: "102 min",
         Title: "How to Train Your Dragon 2",
         Type: "movie"
-      },
+      }
+    ];
+
+    series = [
       {
         Actors: "Jay Baruchel, Cate Blanchett, Gerard Butler, Craig Ferguson",
         Director: "Dean DeBlois",
@@ -106,8 +109,8 @@ describe("MoviesContainer Component", () => {
   it("componentWillReceiveProps receive new props and group them", () => {
     wrapper = subject(mock_props);
     mock_props.movies = movies;
+    mock_props.series = series;
     wrapper.instance().componentWillReceiveProps(mock_props);
     expect(wrapper.instance().groupedResults).toMatchObject(groupedResults);
   });
-  
 });

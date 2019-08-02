@@ -3,26 +3,35 @@ import "./moviesCarousel.scss";
 import MovieCarousel from "./moviesCarousel";
 
 class MoviesCarouselContainer extends Component {
-    state = {
-        selectedMovie: null
-    }
+  carouselRef = React.createRef();
 
-    setSelectedMovie = (movie = null) => {
-        this.setState({ selectedMovie: movie });
-    }
+  state = {
+    selectedMovie: null
+  };
 
-    componentWillReceiveProps(newProps) {
-        if (newProps.movies !== this.props.movies) {
-            this.setSelectedMovie();
-        }
-    }
+  setSelectedMovie = (movie = null) => {
+    this.setState({ selectedMovie: movie });
+  };
 
-    render() {
-        return (
-            <MovieCarousel setSelectedMovie={this.setSelectedMovie} {...this.props}  {...this.state}></MovieCarousel>
-        );
+  componentWillReceiveProps(newProps) {
+    if (newProps.movies !== this.props.movies) {
+      this.setSelectedMovie();
+      this.carouselRef.scrollLeft -= this.carouselRef.scrollWidth;
     }
+  }
+
+  render() {
+    return (
+      <MovieCarousel
+        refCarouselElem={el => {
+          this.carouselRef = el;
+        }}
+        setSelectedMovie={this.setSelectedMovie}
+        {...this.props}
+        {...this.state}
+      />
+    );
+  }
 }
 
 export default MoviesCarouselContainer;
-
