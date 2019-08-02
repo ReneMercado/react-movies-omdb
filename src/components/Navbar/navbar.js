@@ -12,8 +12,13 @@ class Navbar extends Component {
       <div className="navbar">
         <div className="navbar__title">OMDB</div>
         <div className="navbar__search">
-          {/* <i className="fa fa-search"></i> */}
-          <input className="navbar__search__inputSearch" type="text" onChange={(e) => this.onChangeSearch(e)} placeholder="Search.." name="search2" />
+          <input
+            className="navbar__search__inputSearch"
+            type="text"
+            onChange={e => this.onChangeSearch(e)}
+            placeholder="Search.."
+            name="search2"
+          />
         </div>
       </div>
     );

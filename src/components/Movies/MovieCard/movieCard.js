@@ -1,6 +1,5 @@
 import React from "react";
 import "./movieCard.scss";
-
 import notFound from "../../../assets/images/movie_not_found.png";
 
 const MovieCard = (props) => {

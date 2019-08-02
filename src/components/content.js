@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./content.scss";
-import Movies from "./Movies/movies";
+import Movies from "./Movies/moviesContainer";
 
 class Content extends Component {
   render() {

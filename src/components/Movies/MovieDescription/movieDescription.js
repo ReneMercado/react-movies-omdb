@@ -1,6 +1,6 @@
 import React from "react";
 import "./movieDescription.scss";
-
+import notFound from "../../../assets/images/movie_not_found.png";
 import closeIcon from "../../../assets/icons/closeIcon.png";
 
 
@@ -20,7 +20,7 @@ const MovieDescription = (props) => {
                     src={
                         props.movie.Poster !== "N/A"
                             ? props.movie.Poster
-                            : null
+                            : notFound
                     }
                 />
                 <div className="description__content__info">

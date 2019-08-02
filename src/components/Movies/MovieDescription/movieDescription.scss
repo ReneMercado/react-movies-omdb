@@ -1,5 +1,9 @@
 .description{
     animation: fadein 2s;
+    background: #80808054;
+    margin-top: 12px;
+    border-radius: 10px;
+    padding: 9px;
 
     &__header{
         display: flex;
